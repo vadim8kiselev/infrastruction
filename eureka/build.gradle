@@ -1,0 +1,16 @@
+plugins {
+    id "org.springframework.boot" version "2.0.0.RELEASE"
+    id "io.spring.dependency-management" version "1.0.4.RELEASE"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RC2"
+    }
+}
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-config-server')
+    compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
+}
+

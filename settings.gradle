@@ -8,5 +8,5 @@
  */
 rootProject.name = 'infrastruction'
 
-include 'data', 'config', 'gateway'
+include 'data', 'config', 'gateway', 'eureka'
 
