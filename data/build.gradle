@@ -2,10 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.0.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.4.RELEASE'
 
-    id 'net.ltgt.apt' version '0.10'
+    id 'java'
 }
-
-apply plugin:'java'
 
 compileJava {
     sourceCompatibility = '1.9'
@@ -22,8 +20,11 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
     compile 'org.springframework.cloud:spring-cloud-config-client'
     compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+}
 
-
-    compileOnly 'org.projectlombok:lombok:1.16.20'
-    apt 'org.projectlombok:lombok:1.16.20'
+task buildDockerImage() << {
+    exec {
+        executable 'docker'
+        args 'build', projectDir.absolutePath, '-t', project.name
+    }
 }

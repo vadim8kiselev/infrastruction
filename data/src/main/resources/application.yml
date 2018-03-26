@@ -6,7 +6,7 @@ spring:
     name: data
   cloud:
     config:
-      uri: http://config
+      uri: config
 
 eureka:
   client:

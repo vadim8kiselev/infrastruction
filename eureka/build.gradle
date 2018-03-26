@@ -1,9 +1,8 @@
 plugins {
     id 'org.springframework.boot' version '1.4.3.RELEASE'
-    /*id 'io.spring.dependency-management' version '1.0.4.RELEASE'*/
-}
 
-apply plugin:'java'
+    id 'java'
+}
 
 compileJava {
     sourceCompatibility = '1.8'
@@ -20,3 +19,9 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
 }
 
+task buildDockerImage() << {
+    exec {
+        executable 'docker'
+        args 'build', projectDir.absolutePath, '-t', project.name
+    }
+}
