@@ -3,12 +3,13 @@ plugins {
     id "io.spring.dependency-management" version "1.0.4.RELEASE"
 }
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.M8"
+    }
+}
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework.cloud:spring-cloud-config-server')
 }
 
