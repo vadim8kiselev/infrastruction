@@ -1,16 +1,22 @@
 plugins {
-    id "org.springframework.boot" version "2.0.0.RELEASE"
-    id "io.spring.dependency-management" version "1.0.4.RELEASE"
+    id 'org.springframework.boot' version '1.4.3.RELEASE'
+    /*id 'io.spring.dependency-management' version '1.0.4.RELEASE'*/
+}
+
+apply plugin:'java'
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
 }
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RC2"
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR4'
     }
 }
 
 dependencies {
-    compile('org.springframework.cloud:spring-cloud-config-server')
     compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
 }
 

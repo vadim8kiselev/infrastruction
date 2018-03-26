@@ -1,2 +1,6 @@
 server:
-  port: 8800
+  port: 8760
+
+eureka:
+  instance:
+    preferIpAddress: true
