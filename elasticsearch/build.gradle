@@ -1,0 +1,34 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.4.RELEASE'
+
+    id 'groovy'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Brixton.RC2'
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.13'
+
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+
+    compile 'org.elasticsearch:elasticsearch:6.2.0'
+    compile 'org.elasticsearch.client:elasticsearch-rest-high-level-client:6.0.0'
+
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.cloud:spring-cloud-starter-ribbon'
+
+    compile 'com.google.guava:guava:19.0'
+}
+
+task buildDockerImage() << {
+    exec {
+        executable 'docker'
+        args 'build', projectDir.absolutePath, '-t', project.name
+    }
+}
